@@ -46,26 +46,28 @@ export function activate(context: vscode.ExtensionContext) {
 				const idx = message.index;
 				const x = idx % 32;
 				const y = Math.floor(idx / 32);
+				// const x = Math.floor(idx / 32);
+				// const y = idx % 32;
 				// console.log(x, y, maze_data[idx] & 0x0f,message.wall);
 				if (message.wall == "north") {
 					maze_data[idx] = maze_data[idx] ^ 0b0001;
 					if (y < 31) {
-						maze_data[idx + 32] = maze_data[idx + 32] ^ 0b1000;
+						maze_data[idx + 1] = maze_data[idx + 1] ^ 0b1000;
 					}
 				} else if (message.wall == "east") {
 					maze_data[idx] = maze_data[idx] ^ 0b0010;
 					if (x < 31) {
-						maze_data[idx + 1] = maze_data[idx + 1] ^ 0b0100;
+						maze_data[idx + 32] = maze_data[idx + 32] ^ 0b0100;
 					}
 				} else if (message.wall == "west") {
 					maze_data[idx] = maze_data[idx] ^ 0b0100;
 					if (x > 0) {
-						maze_data[idx - 1] = maze_data[idx - 1] ^ 0b0010;
+						maze_data[idx - 32] = maze_data[idx - 32] ^ 0b0010;
 					}
 				} else if (message.wall == "south") {
 					maze_data[idx] = maze_data[idx] ^ 0b1000;
 					if (y > 0) {
-						maze_data[idx - 32] = maze_data[idx - 32] ^ 0b0001;
+						maze_data[idx - 1] = maze_data[idx - 1] ^ 0b0001;
 					}
 				}
 
@@ -109,8 +111,11 @@ function generateMicroMouseSvg(wallData: number[]): string {
 	for (let idx = 0; idx < wallData.length; idx++) {
 		if (idx >= gridSize * gridSize) break;
 		const wall = wallData[idx]; // マスの壁情報を取得
-		const x = idx % gridSize;
-		const y = Math.floor(idx / gridSize);
+		// const x = idx % gridSize;
+		// const y = Math.floor(idx / gridSize);
+		const x = Math.floor(idx / gridSize);
+		const y = idx % gridSize;
+
 		const xStart = x * cellSize;
 		const yStart = cellSize * gridSize - y * cellSize;
 		// 北の壁
