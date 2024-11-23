@@ -2,6 +2,7 @@
   "name": "mm-maze-viewer",
   "displayName": "mm_maze_viewer",
   "description": "",
+  "publisher": "Naophis",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.95.0"
