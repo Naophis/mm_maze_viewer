@@ -31,7 +31,66 @@
         "command": "extension.generateImage",
         "title": "Maze Preview"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "MicroMouse Maze Viewer Configuration",
+      "properties": {
+        "mazeViewer.gridSize": {
+          "type": "number",
+          "default": 32,
+          "enum": [
+            16,
+            32
+          ],
+          "enumDescriptions": [
+            "Classic/semi-final(16x16)",
+            "Final(32x32)"
+          ],
+          "description": "迷路サイズ(16x16 or 32x32)"
+        },
+        "mazeViewer.wallDirectionType": {
+          "type": "string",
+          "default": "N-E-W-S",
+          "enum": [
+            "N-E-W-S",
+            "N-E-S-W"
+          ],
+          "enumDescriptions": [
+            "N-E-W-S (N=1, E=2, W=4, S=8)",
+            "N-E-S-W (N=1, E=2, S=4, W=8)"
+          ],
+          "description": "方角と数値の対応"
+        },
+        "mazeViewer.arrayType": {
+          "type": "string",
+          "default": "1D",
+          "enum": [
+            "1D[index]",
+            "2D[x][y]",
+            "2D[y][x]"
+          ],
+          "enumDescriptions": [
+            "[index]: (x=idx%gridSize, y=idx/gridSize)で表現",
+            "[x][y]で表現"
+          ],
+          "description": "迷路情報の格納配列"
+        },
+        "mazeViewer.arrayOrder": {
+          "type": "string",
+          "default": "a->b",
+          "enum": [
+            "a->b",
+            "b->a"
+          ],
+          "enumDescriptions": [
+            "[a][b]でaからインクリメント",
+            "[a][b]でbからインクリメント"
+          ],
+          "description": "配列の順序（[a][b]に対し、[a]からインクリメント or [b]からインクリメント）"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -52,6 +111,5 @@
     "eslint": "^9.13.0",
     "typescript": "^5.6.3"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
