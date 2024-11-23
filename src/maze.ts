@@ -12,7 +12,6 @@ class Maze {
   WEST = 0b0100;
   SOUTH = 0b1000;
 
-
   constructor(gridSize: number, wallDirectionType: string, arrayType: string, arrayOrder: string) {
     this.gridSize = gridSize;
     this.wallDirectionType = wallDirectionType;
@@ -49,6 +48,11 @@ class Maze {
 
   set_from_text(text: string) {
     this.data = text.split(",").map(Number);
+    if (this.data.length > 300) {
+      this.gridSize = 32;
+    } else {
+      this.gridSize = 16;
+    }
   }
 
   set_data(maze_data: number[]) {

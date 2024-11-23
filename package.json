@@ -36,19 +36,6 @@
       "type": "object",
       "title": "MicroMouse Maze Viewer Configuration",
       "properties": {
-        "mazeViewer.gridSize": {
-          "type": "number",
-          "default": 32,
-          "enum": [
-            16,
-            32
-          ],
-          "enumDescriptions": [
-            "Classic/semi-final(16x16)",
-            "Final(32x32)"
-          ],
-          "description": "迷路サイズ(16x16 or 32x32)"
-        },
         "mazeViewer.wallDirectionType": {
           "type": "string",
           "default": "N-E-W-S",

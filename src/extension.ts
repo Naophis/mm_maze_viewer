@@ -71,7 +71,7 @@ export function deactivate() { }
 
 function generateMicroMouseSvg(maze: Maze): string {
 	const cellSize = 80; // 1マスのサイズ
-	const wallThickness = cellSize / 8; // 壁の厚さ
+	const wallThickness = cellSize / 10; // 壁の厚さ
 	const gridSize = maze.gridSize;
 	const svgWidth = cellSize * gridSize;
 	const svgHeight = cellSize * gridSize;
@@ -118,7 +118,6 @@ function generateMicroMouseSvg(maze: Maze): string {
 			svgContent += `<rect data-index="${idx}" data-value="${wall}" data-wall="south" x="${xStart}" y="${yStart + cellSize - wallThickness}" width="${cellSize}" height="${wallThickness}" fill="#fff" fill-opacity="0"/>`;
 		}
 	}
-
 	svgContent += `</svg>`;
 	return svgContent;
 }
