@@ -13,8 +13,8 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		const document = editor.document;
-		if (document.languageId !== 'maze') {
-			vscode.window.showErrorMessage('This command works only with .maze files!');
+		if (document.languageId !== 'maze' && document.languageId !== 'yaml') {
+			vscode.window.showErrorMessage('This command works only with .maze and .yaml files!');
 			return;
 		}
 
